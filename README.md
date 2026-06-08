@@ -1,68 +1,242 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎨 Painter Palette
+
+A modern web application for creating, customizing, and managing color palettes. Perfect for designers, developers, and anyone who needs to build cohesive color schemes for their projects.
+
+**Live Demo:** [zack09holland.github.io/painter-palette](https://zack09holland.github.io/painter-palette/)
+
+---
+
+## Features
+
+- 🎯 **Create Custom Palettes** - Design your own color schemes from scratch
+- 🔄 **Dynamic Color Scaling** - Generate 10 shades (50-900) for each base color using advanced color science
+- 📋 **Multiple Color Formats** - View and copy colors in HEX, RGB, or RGBA formats
+- 🎪 **Pre-built Palettes** - Start with curated palettes including Material UI and Flat UI color schemes
+- 💾 **Persistent Storage** - Your palettes are saved locally and persist between sessions
+- 📱 **Responsive Design** - Works seamlessly on desktop and mobile devices
+- 🎨 **Interactive UI** - Material Design interface with intuitive controls
+- 🔗 **Drag & Drop** - Easily reorder colors in your palettes
+- 📤 **Copy to Clipboard** - Quick one-click copying of color codes
+
+---
+
+## Technology Stack
+
+- **React** (v16.13) - UI library for building interactive components
+- **Material-UI** (v4) - Comprehensive component library and styling framework
+- **Chroma.js** - Advanced color manipulation and scaling using the LAB color space
+- **React Router** (v5) - Client-side routing for multi-page navigation
+- **React Sortable HOC** - Drag-and-drop functionality for reordering colors
+- **React Color** - Color picker component
+- **Local Storage API** - Client-side persistence for saved palettes
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v12 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/zack09holland/painter-palette.git
+   cd painter-palette
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+   The application will open at `http://localhost:3000/painter-palette`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `build` directory.
+
+---
+
+## Usage
+
+### Browsing Palettes
+
+1. Open the application and browse the palette list
+2. Click on any palette to view all color variations
+3. Use the slider to adjust the color shade level (50-900)
+4. Change the color format dropdown to view colors in different formats
+
+### Creating a New Palette
+
+1. Click the **"Create New Palette"** button
+2. Select a starting palette or begin with an empty one
+3. Use the color picker to add colors:
+   - Enter a color name
+   - Select the color value (HEX, RGB, etc.)
+   - Click **"Add Color"** or press Enter
+4. Drag colors to reorder them
+5. Remove colors using the delete button
+6. Click **"Save"** and enter a palette name
+
+### Managing Palettes
+
+- **View Details** - Click a palette to explore all color shades
+- **Delete** - Remove a palette from your collection
+- **Export** - Copy individual color values in your preferred format
+
+### Color Details
+
+Click on any color box to view:
+- All tint and shade variations (50-900)
+- Color values in multiple formats
+- One-click copy functionality
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Palette/              # Main palette display
+│   ├── NewPalette/           # Palette creation interface
+│   ├── SingleColorPalette/   # Detailed color view
+│   ├── ColorBox/             # Individual color display
+│   ├── PaletteList/          # Palette collection view
+│   ├── NavBar/               # Navigation and controls
+│   └── Footer/               # Palette metadata display
+├── helpers/
+│   └── generatePalette.js    # Color scaling logic
+├── styles/                   # Material-UI style definitions
+├── seedColorPalettes.js      # Pre-built palette data
+└── App.js                    # Main application component
+```
+
+### Key Files
+
+- **generatePalette.js** - Uses Chroma.js to create 10 shades for each color by blending from dark to light
+- **seedColorPalettes.js** - Contains pre-built palettes including Material Design colors
+- **App.js** - Manages routing, state, and persistence
+
+---
+
+## Color Generation Algorithm
+
+The application uses Chroma.js to generate color scales:
+
+1. For each base color, a scale is created using LAB color space
+2. The scale ranges from darkened color → base color → white
+3. 10 discrete color stops are extracted (corresponding to levels 50-900)
+4. Each color is converted to HEX, RGB, and RGBA formats
+
+This approach ensures perceptually uniform color variations that work well for design systems and applications.
+
+---
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command | Purpose |
+|---------|---------|
+| `npm start` | Run development server |
+| `npm build` | Create production build |
+| `npm test` | Run tests |
+| `npm deploy` | Deploy to GitHub Pages |
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Browser Support
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Local Storage
 
-### `npm run build`
+Palettes are automatically saved to your browser's local storage. This means:
+- ✅ All custom palettes persist across browser sessions
+- ✅ No account or login required
+- ⚠️ Clearing browser data will remove saved palettes
+- ⚠️ Data is specific to each browser and device
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The project is configured for deployment to GitHub Pages:
 
-### `npm run eject`
+```bash
+npm run deploy
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This builds the application and pushes it to the `gh-pages` branch.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Enhancements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Potential features for future versions:
+- Export palettes as JSON, CSS, or image files
+- Import palettes from external sources
+- Palette sharing via URL
+- Advanced color harmony suggestions
+- Accessibility contrast checking
+- Dark mode support
+- Mobile app version
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! If you'd like to improve this project:
 
-### Code Splitting
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+---
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This project is open source and available under the MIT License.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Author
 
-### Advanced Configuration
+**Zack Holland** - [GitHub](https://github.com/zack09holland)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Created as a personal challenge to build a practical application using React and modern web technologies.
 
-### Deployment
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Acknowledgments
 
-### `npm run build` fails to minify
+- [Material-UI](https://material-ui.com/) - Excellent component library and design system
+- [Chroma.js](https://gka.github.io/chroma.js/) - Powerful color manipulation library
+- [Material Design Color System](https://material.io/design/color/) - Inspiration for color palettes
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---
+
+## Support
+
+If you encounter any issues or have questions, please:
+- Check existing [issues](https://github.com/zack09holland/painter-palette/issues)
+- Open a new issue with a detailed description
+- Include steps to reproduce if reporting a bug
