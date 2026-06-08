@@ -1,5 +1,5 @@
 {
-  "homepage": "http://zack09holland.github.io/painter-palette",
+  "homepage": "/",
   "name": "painter-palette",
   "version": "0.1.0",
   "private": true,
@@ -30,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "cf:deploy": "npm run build && wrangler pages deploy build"
   },
   "eslintConfig": {
     "extends": "react-app"
